@@ -33,6 +33,8 @@ export function getEthPriceInUSD(): BigDecimal {
     // USDC is the only pair so far
   } else if (usdcPair !== null) {
     return usdcPair.token0Price
+  } else if (usdtPair !== null) {
+    return usdtPair.token0Price
   } else {
     return ZERO_BD
   }
