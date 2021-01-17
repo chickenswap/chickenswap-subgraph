@@ -36,5 +36,5 @@ jobs:
 
       - run: yarn codegen
       - run: yarn build
-      env:
-        GRAPH_ACCESS_TOKEN: ${{ secrets.GRAPH_ACCESS_TOKEN }}
+        env:
+          GRAPH_ACCESS_TOKEN: ${{ secrets.GRAPH_ACCESS_TOKEN }}
