@@ -10,7 +10,7 @@ jobs:
   test:
     strategy:
       matrix:
-        node: ['10.x', '12.x']
+        node: ['14.x']
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
@@ -36,3 +36,5 @@ jobs:
 
       - run: yarn codegen
       - run: yarn build
+      env:
+        GRAPH_ACCESS_TOKEN: ${{ secrets.GRAPH_ACCESS_TOKEN }}
