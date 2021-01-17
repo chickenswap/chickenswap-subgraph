@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  deploy:
     strategy:
       matrix:
         node: ['14.x']
@@ -31,10 +31,8 @@ jobs:
           key: ${{ matrix.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ matrix.os }}-yarn-
-
       - run: yarn
-
       - run: yarn codegen
-      - run: yarn build
+      - run: yarn deploy
         env:
           GRAPH_ACCESS_TOKEN: ${{ secrets.GRAPH_ACCESS_TOKEN }}
