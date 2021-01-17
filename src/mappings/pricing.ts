@@ -13,7 +13,11 @@ export function getEthPriceInUSD(): BigDecimal {
   // let daiPair = Pair.load(DAI_WETH_PAIR) // dai is token0
   // let usdcPair = Pair.load(USDC_WETH_PAIR) // usdc is token0
   let usdtPair = Pair.load(USDT_WETH_PAIR) // usdt is token1
-  return usdtPair.token0Price
+  if (usdtPair !== null) {
+    return usdtPair.token0Price
+  } else {
+    return ZERO_BD
+  }
   // all 3 have been created
   // if (daiPair !== null && usdcPair !== null && usdtPair !== null) {
   //   let totalLiquidityETH = daiPair.reserve1.plus(usdcPair.reserve1).plus(usdtPair.reserve0)
