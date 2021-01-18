@@ -14,6 +14,7 @@ export function getEthPriceInUSD(): BigDecimal {
   // let usdcPair = Pair.load(USDC_WETH_PAIR) // usdc is token0
   let usdtPair = Pair.load(USDT_WETH_PAIR) // usdt is token1
   if (usdtPair !== null) {
+    console.log({usdtPair})
     return usdtPair.token0Price
   } else {
     return ZERO_BD
@@ -48,16 +49,13 @@ export function getEthPriceInUSD(): BigDecimal {
 let WHITELIST: string[] = [
   '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', // WETH
   '0xdac17f958d2ee523a2206206994597c13d831ec7', // USDT
-  '0xe63684bcf2987892cefb4caa79bd21b34e98a291', // kfc
-  '0x1732c5b57574aca699ab343246005ad64a48b7ec', // kfd
-  '0x5ebbd1c991463566f8a755f15ee25f8610883fcf', // kfs
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
-let MINIMUM_USD_THRESHOLD_NEW_PAIRS = BigDecimal.fromString('400000')
+let MINIMUM_USD_THRESHOLD_NEW_PAIRS = BigDecimal.fromString('0.1')
 
 // minimum liquidity for price to get tracked
-let MINIMUM_LIQUIDITY_THRESHOLD_ETH = BigDecimal.fromString('2')
+let MINIMUM_LIQUIDITY_THRESHOLD_ETH = BigDecimal.fromString('0.1')
 
 /**
  * Search through graph to find derived Eth per token.
