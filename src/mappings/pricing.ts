@@ -2,7 +2,6 @@
 import { Pair, Token, Bundle } from '../types/schema'
 import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD } from './helpers'
-import { log } from '@graphprotocol/graph-ts'
 const WETH_ADDRESS = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
 // const USDC_WETH_PAIR = '' // created 10008355
 // const DAI_WETH_PAIR = '' // created block 10042267
@@ -14,8 +13,7 @@ export function getEthPriceInUSD(): BigDecimal {
   // let usdcPair = Pair.load(USDC_WETH_PAIR) // usdc is token0
   let usdtPair = Pair.load(USDT_WETH_PAIR) // usdt is token1
   if (usdtPair !== null) {
-    log.info('usdtPair:', [usdtPair])
-    return usdtPair.token0Price
+    return usdtPair.token1Price
   } else {
     return ZERO_BD
   }
