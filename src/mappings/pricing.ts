@@ -14,7 +14,7 @@ export function getEthPriceInUSD(): BigDecimal {
   // let usdcPair = Pair.load(USDC_WETH_PAIR) // usdc is token0
   let usdtPair = Pair.load(USDT_WETH_PAIR) // usdt is token1
   if (usdtPair !== null) {
-    log.info('usdtPair:', [usdtPair])
+    log.info('usdtPair:', [usdtPair?.token0Price])
     return usdtPair.token0Price
   } else {
     return ZERO_BD
